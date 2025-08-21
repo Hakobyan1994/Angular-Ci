@@ -18,6 +18,10 @@ jobs:
           npm i
           npm run build
 
+      - name: Run tests
+        run: |
+          npm run test -- --watch=false --browsers=ChromeHeadless    
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

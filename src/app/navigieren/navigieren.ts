@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-navigieren',
-  imports: [RouterLink,RouterLinkActive],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navigieren.html',
-  styleUrl: './navigieren.scss'
+  styleUrls: ['./navigieren.scss'],
 })
 export class Navigieren {
- alo:string="Mesrop"
+  alo = 'Mesrop';
+
+  // Optional, falls du Route-Parameter brauchst:
+  private route = inject(ActivatedRoute);
 }

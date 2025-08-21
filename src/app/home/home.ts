@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Navigieren } from '../navigieren/navigieren';
 
 @Component({
   selector: 'app-home',
-  standalone: true, 
-  imports: [Navigieren],
+  standalone: true,
+  imports: [CommonModule, Navigieren],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrls: ['./home.scss'],
 })
-export class Home {
- 
-}
+export class Home {}

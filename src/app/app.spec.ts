@@ -1,10 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('App', () => {
   beforeEach(async () => {
+    // Template nur im Test überschreiben:
+    // funktioniert mit title() (Signal) ODER title (String)
+    TestBed.overrideComponent(App, {
+      set: { template: '<h1>Hello, {{ title?.() || title }}</h1>' },
+    });
+
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App, RouterTestingModule], // falls App RouterOutlet o.ä. nutzt
     }).compileComponents();
   });
 

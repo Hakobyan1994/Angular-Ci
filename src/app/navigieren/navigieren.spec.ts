@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { Navigieren } from './navigieren';
 
 describe('Navigieren', () => {
@@ -8,7 +8,8 @@ describe('Navigieren', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Navigieren]
+      imports: [Navigieren],
+      providers: [provideRouter([])],
     })
     .compileComponents();
 
