@@ -19,9 +19,9 @@ jobs:
           npm run build
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.1 
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: mesrop-hakobyan.de
+          server: ftp.mesrop-hakobyan.de
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/angular-test/browser/
