@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps                              # ⬅️ explizites FTPS (kein SFTP)
-          port: 21
+          port: 990 
           local-dir: dist/angular-test/browser/       # ggf. anpassen, falls ohne /browser baut 
           log-level: verbose
           timeout: 600000
