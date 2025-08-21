@@ -5,24 +5,28 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-    
-    - name: Node 22.15.1
-      uses: actions/setup-node@v1
-      with:
-        node-version: 22.15.1
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
 
-    - name: Install and build
-      run: |
-        npm i
-        npm run build
+      - name: Node 22.15.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 22.15.1
 
+      - name: Install and build
+        run: |
+          npm i
+          npm run build
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.1
-      with:
-        server: mesrop-hakobyan.de
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: dist/angular-test/browser/
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5   # ⬅️ nur Versionsbump
+        with:
+          server: ftp.mesrop-hakobyan.de             # ⬅️ nutze den FTP-Host
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps                              # ⬅️ explizites FTPS (kein SFTP)
+          port: 21
+          local-dir: dist/angular-test/browser/       # ggf. anpassen, falls ohne /browser baut 
+          log-level: verbose
+          timeout: 600000
+          max-retries: 5
